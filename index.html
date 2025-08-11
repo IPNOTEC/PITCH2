@@ -325,6 +325,7 @@
             padding: 15px;
             width: 250px;
             text-align: center;
+            position: relative;
         }
         
         .prototype-card h4 {
@@ -603,6 +604,62 @@
             font-size: 1.3rem;
             line-height: 1.8;
         }
+        
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+        
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            z-index: 100;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--green);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 0.9rem;
+            text-align: left;
+            line-height: 1.4;
+            margin-top: 10px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover::after {
+            opacity: 1;
+        }
+        
+        .tooltip .tooltip-text {
+            display: none;
+            position: absolute;
+            z-index: 100;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--green);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 0.9rem;
+            text-align: left;
+            line-height: 1.4;
+            margin-top: 10px;
+            pointer-events: none;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            display: block;
+        }
 
         @media (max-width: 768px) {
             h1 {
@@ -684,6 +741,12 @@
                 width: 100%;
                 margin-bottom: 20px;
             }
+            
+            .tooltip:hover::after {
+                width: 200px;
+                left: 0;
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -717,27 +780,27 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div class="canvas-section">Strategic Alliances:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Strategic alliances drive innovation and reduce costs. University partnerships provide talent pipelines while incubators offer startup ecosystems.">Strategic Alliances:</div>
                                 <ul class="canvas-content">
-                                    <li>University innovation centers</li>
-                                    <li>Startup incubators (10 partnerships)</li>
-                                    <li>Tech infrastructure providers</li>
+                                    <li class="tooltip" data-tooltip="Access to top talent and research facilities. Universities provide testing grounds for our solutions and student recruitment.">University innovation centers</li>
+                                    <li class="tooltip" data-tooltip="Pipeline for promising startups and entrepreneurs. Incubators provide validation and early adoption opportunities.">Startup incubators (10 partnerships)</li>
+                                    <li class="tooltip" data-tooltip="Cost-effective infrastructure scaling. Partners like AWS and Azure enable rapid deployment without heavy CAPEX.">Tech infrastructure providers</li>
                                 </ul>
                             </td>
                             <td colspan="2">
-                                <div class="canvas-section">Core Operations:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Core activities focus on building foundational tech and user base. Community engagement drives organic growth and retention.">Core Operations:</div>
                                 <ul class="canvas-content">
-                                    <li>Platform development & maintenance</li>
-                                    <li>Community engagement programs</li>
-                                    <li>User acquisition (target: <span class="currency">5,000</span> users)</li>
+                                    <li class="tooltip" data-tooltip="Creating scalable cloud architecture and user interfaces. Continuous iteration based on user feedback and metrics.">Platform development & maintenance</li>
+                                    <li class="tooltip" data-tooltip="Hosting virtual events, mentorship programs, and challenges. Building brand advocates through value-driven interactions.">Community engagement programs</li>
+                                    <li class="tooltip" data-tooltip="Targeted digital marketing campaigns and referral programs. Focused on high-value segments with low acquisition costs.">User acquisition (target: <span class="currency">5,000</span> users)</li>
                                 </ul>
                             </td>
                             <td>
-                                <div class="canvas-section">Primary Offers:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Differentiated offerings that solve core user pain points. Focused on affordability and network effects for rapid adoption.">Primary Offers:</div>
                                 <ul class="canvas-content">
-                                    <li>Affordable virtual PC (<span class="currency">₹1,001</span> setup)</li>
-                                    <li>Entrepreneur networking platform</li>
-                                    <li>Exclusive startup resources</li>
+                                    <li class="tooltip" data-tooltip="Low-cost entry point with high perceived value. Provides essential tools for entrepreneurs at 1/10th of traditional costs.">Affordable virtual PC (<span class="currency">₹1,001</span> setup)</li>
+                                    <li class="tooltip" data-tooltip="Curated connections for business growth. Algorithmic matching based on skills, goals, and complementary offerings.">Entrepreneur networking platform</li>
+                                    <li class="tooltip" data-tooltip="Premium content and tools for committed users. Creates loyalty while generating predictable revenue streams.">Exclusive startup resources</li>
                                 </ul>
                             </td>
                         </tr>
@@ -749,28 +812,28 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="canvas-section">Assets:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Strategic assets enabling scalable growth. Tech stack designed for rapid iteration and cost efficiency.">Assets:</div>
                                 <ul class="canvas-content">
-                                    <li>Cloud infrastructure</li>
-                                    <li>Development team (5 FTEs)</li>
-                                    <li>Community managers</li>
+                                    <li class="tooltip" data-tooltip="Elastic infrastructure with pay-as-you-go model. Enables scaling without significant upfront investment.">Cloud infrastructure</li>
+                                    <li class="tooltip" data-tooltip="Lean team focused on core competencies. Mix of technical and community-building expertise.">Development team (5 FTEs)</li>
+                                    <li class="tooltip" data-tooltip="Dedicated professionals nurturing user relationships. Critical for retention and organic growth through referrals.">Community managers</li>
                                 </ul>
                             </td>
                             <td colspan="2"> </td>
                             <td>
-                                <div class="canvas-section">Distribution:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Multi-channel approach for maximum reach. Leveraging existing networks for cost-effective distribution.">Distribution:</div>
                                 <ul class="canvas-content">
-                                    <li>Online platform</li>
-                                    <li>University partnerships</li>
-                                    <li>Startup events</li>
+                                    <li class="tooltip" data-tooltip="Primary acquisition and service delivery channel. Optimized for mobile-first users with seamless onboarding.">Online platform</li>
+                                    <li class="tooltip" data-tooltip="Institutional access to concentrated target markets. Provides credibility and lowers customer acquisition costs.">University partnerships</li>
+                                    <li class="tooltip" data-tooltip="High-impact physical presence for brand building. Creates evangelists through memorable experiences.">Startup events</li>
                                 </ul>
                             </td>
                             <td>
-                                <div class="canvas-section">Target Audience:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Precisely defined segments with high growth potential. Focused on users with immediate pain points we solve.">Target Audience:</div>
                                 <ul class="canvas-content">
-                                    <li>Early-stage entrepreneurs</li>
-                                    <li>Freelancers</li>
-                                    <li>University innovators</li>
+                                    <li class="tooltip" data-tooltip="Needing affordable tools and networks. High willingness to pay for solutions that accelerate their ventures.">Early-stage entrepreneurs</li>
+                                    <li class="tooltip" data-tooltip="Seeking professional community and tools. Value flexibility and productivity-enhancing features.">Freelancers</li>
+                                    <li class="tooltip" data-tooltip="Looking to commercialize research. Need market access and commercialization expertise.">University innovators</li>
                                 </ul>
                             </td>
                         </tr>
@@ -780,21 +843,21 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <div class="canvas-section">Expenses:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Lean cost structure focused on scalable elements. Prioritizing high-ROI activities with measurable outcomes.">Expenses:</div>
                                 <ul class="canvas-content">
-                                    <li>Platform development: <span class="currency">₹50 Lakhs</span></li>
-                                    <li>Marketing: <span class="currency">₹20 Lakhs</span></li>
-                                    <li>Operations: <span class="currency">₹30 Lakhs</span></li>
-                                    <li>Total: <span class="currency">₹1 Crore</span></li>
+                                    <li class="tooltip" data-tooltip="Building MVP and core features. Using modern frameworks for rapid development at lower costs.">Platform development: <span class="currency">₹50 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Digital campaigns and partnership development. Focused on performance marketing with clear CAC metrics.">Marketing: <span class="currency">₹20 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Cloud hosting, support, and administrative costs. Optimized through automation and offshore resources.">Operations: <span class="currency">₹30 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Total burn rate designed for 18-month runway. Allows sufficient time to achieve product-market fit and scale.">Total: <span class="currency">₹1 Crore</span></li>
                                 </ul>
                             </td>
                             <td colspan="2">
-                                <div class="canvas-section">Income Sources:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Diverse monetization from day one. Multiple streams reduce risk and increase lifetime value.">Income Sources:</div>
                                 <ul class="canvas-content">
-                                    <li>Virtual PC setup: <span class="currency">₹50.05 Lakhs</span></li>
-                                    <li>Events: <span class="currency">₹5 Lakhs</span></li>
-                                    <li>VIP Memberships: <span class="currency">₹1.2 Lakhs</span></li>
-                                    <li>Projected revenue: <span class="currency">₹56.25 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Primary revenue driver with high margins. Recurring revenue from premium features increases LTV.">Virtual PC setup: <span class="currency">₹50.05 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Premium experiences with sponsor opportunities. Builds community while generating high-margin revenue.">Events: <span class="currency">₹5 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="High-value subscription tier with exclusive benefits. Targets serious entrepreneurs with higher willingness to pay.">VIP Memberships: <span class="currency">₹1.2 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Conservative projections based on comparable platforms. Assumes 3% conversion from free to paid tiers.">Projected revenue: <span class="currency">₹56.25 Lakhs</span></li>
                                 </ul>
                             </td>
                         </tr>
@@ -827,27 +890,27 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div class="canvas-section">Strategic Alliances:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Strategic alliances for physical expansion. Real estate partners provide locations while IoT providers enable smart infrastructure.">Strategic Alliances:</div>
                                 <ul class="canvas-content">
-                                    <li>Real estate developers</li>
-                                    <li>IoT technology providers</li>
-                                    <li>Corporate innovation teams</li>
+                                    <li class="tooltip" data-tooltip="Access to premium locations at favorable terms. Revenue-sharing models reduce capital requirements.">Real estate developers</li>
+                                    <li class="tooltip" data-tooltip="Enabling smart environments with integrated tech. Partnerships with leaders like Cisco and Siemens.">IoT technology providers</li>
+                                    <li class="tooltip" data-tooltip="Enterprise clients for B2B revenue streams. Corporate innovation drives bulk membership sales.">Corporate innovation teams</li>
                                 </ul>
                             </td>
                             <td colspan="2">
-                                <div class="canvas-section">Core Operations:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Expanding service offerings and physical presence. Focus on operational excellence and community quality.">Core Operations:</div>
                                 <ul class="canvas-content">
-                                    <li>IoT hub development</li>
-                                    <li>Service operations management</li>
-                                    <li>Community expansion</li>
+                                    <li class="tooltip" data-tooltip="Designing and deploying smart workspace solutions. Creating signature experiences that differentiate our brand.">IoT hub development</li>
+                                    <li class="tooltip" data-tooltip="Streamlining operations for maximum efficiency. Implementing automation to maintain margins during scaling.">Service operations management</li>
+                                    <li class="tooltip" data-tooltip="Growing user base through targeted expansion. Focus on high-value geographic and demographic segments.">Community expansion</li>
                                 </ul>
                             </td>
                             <td>
-                                <div class="canvas-section">Primary Offers:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Integrated solutions for modern professionals. Combining physical and digital experiences seamlessly.">Primary Offers:</div>
                                 <ul class="canvas-content">
-                                    <li>IPNOTEC Co-working & Co-living</li>
-                                    <li>IPNOTEC Homes & Pvt Hostels</li>
-                                    <li>Integrated tech ecosystem</li>
+                                    <li class="tooltip" data-tooltip="Premium flexible workspaces with smart features. Targeting digital nomads and remote teams with premium amenities.">IPNOTEC Co-working & Co-living</li>
+                                    <li class="tooltip" data-tooltip="Residential solutions with productivity features. For professionals seeking integrated work-life environments.">IPNOTEC Homes & Pvt Hostels</li>
+                                    <li class="tooltip" data-tooltip="Seamless experience across physical and digital. Creating stickiness through ecosystem integration.">Integrated tech ecosystem</li>
                                 </ul>
                             </td>
                         </tr>
@@ -859,28 +922,28 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="canvas-section">Assets:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Strategic assets enabling physical expansion. Focus on high-ROI locations with strong demand.">Assets:</div>
                                 <ul class="canvas-content">
-                                    <li>Physical locations (launching)</li>
-                                    <li>IoT infrastructure</li>
-                                    <li>Operations team (20 FTEs)</li>
+                                    <li class="tooltip" data-tooltip="Flagship locations in innovation hubs. Designed for maximum utilization and community interaction.">Physical locations (launching)</li>
+                                    <li class="tooltip" data-tooltip="Smart building systems for efficiency. Reduces operational costs while enhancing user experience.">IoT infrastructure</li>
+                                    <li class="tooltip" data-tooltip="Scaled team to manage expanded operations. Mix of hospitality, tech, and community management expertise.">Operations team (20 FTEs)</li>
                                 </ul>
                             </td>
                             <td colspan="2"> </td>
                             <td>
-                                <div class="canvas-section">Distribution:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Expanded distribution for broader reach. Combining digital efficiency with human touchpoints.">Distribution:</div>
                                 <ul class="canvas-content">
-                                    <li>Direct sales team</li>
-                                    <li>Corporate partnerships</li>
-                                    <li>Digital marketing</li>
+                                    <li class="tooltip" data-tooltip="High-touch sales for corporate accounts. Focused on enterprise deals with higher contract values.">Direct sales team</li>
+                                    <li class="tooltip" data-tooltip="Bulk memberships through employer programs. Provides predictable revenue and lowers churn.">Corporate partnerships</li>
+                                    <li class="tooltip" data-tooltip="Performance-based acquisition campaigns. Leveraging first-party data for precise targeting.">Digital marketing</li>
                                 </ul>
                             </td>
                             <td>
-                                <div class="canvas-section">Target Audience:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Expanding to adjacent high-value segments. Focus on customers with higher lifetime value potential.">Target Audience:</div>
                                 <ul class="canvas-content">
-                                    <li>Digital nomads & remote workers</li>
-                                    <li>Startup teams</li>
-                                    <li>Corporate innovation groups</li>
+                                    <li class="tooltip" data-tooltip="High-value segment seeking premium experiences. Willing to pay for convenience and community.">Digital nomads & remote workers</li>
+                                    <li class="tooltip" data-tooltip="Growing teams needing flexible solutions. Value integrated services that support scaling.">Startup teams</li>
+                                    <li class="tooltip" data-tooltip="Enterprise innovation outposts. Seeking turnkey solutions for distributed teams.">Corporate innovation groups</li>
                                 </ul>
                             </td>
                         </tr>
@@ -890,21 +953,21 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <div class="canvas-section">Expenses:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Strategic investments for long-term assets. Focus on locations with high growth potential and favorable terms.">Expenses:</div>
                                 <ul class="canvas-content">
-                                    <li>Property development: <span class="currency">₹3 Crores</span></li>
-                                    <li>IoT infrastructure: <span class="currency">₹2 Crores</span></li>
-                                    <li>Operations: <span class="currency">₹1 Crore</span></li>
-                                    <li>Total: <span class="currency">₹6 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Acquiring and developing flagship locations. Targeting innovation districts with high demand potential.">Property development: <span class="currency">₹3 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Smart building technology for efficiency. Creating differentiated experiences with premium pricing power.">IoT infrastructure: <span class="currency">₹2 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Scaled operations for expanded footprint. Implementing automation to maintain margins at scale.">Operations: <span class="currency">₹1 Crore</span></li>
+                                    <li class="tooltip" data-tooltip="Total investment designed for 2-year payback. Conservative projections based on comparable models.">Total: <span class="currency">₹6 Crores</span></li>
                                 </ul>
                             </td>
                             <td colspan="2">
-                                <div class="canvas-section">Income Sources:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Diversified revenue with recurring streams. Multiple monetization layers increase stability and valuation.">Income Sources:</div>
                                 <ul class="canvas-content">
-                                    <li>Space rentals: <span class="currency">₹9 Crores</span></li>
-                                    <li>Virtual PC Setup: <span class="currency">₹1 Crore</span></li>
-                                    <li>Events & VIP: <span class="currency">₹31 Lakhs</span></li>
-                                    <li>Projected revenue: <span class="currency">₹10.31 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Primary revenue driver with high margins. Flexible plans cater to different user needs and budgets.">Space rentals: <span class="currency">₹9 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Continuing digital revenue from core product. Synergistic with physical offerings through bundled packages.">Virtual PC Setup: <span class="currency">₹1 Crore</span></li>
+                                    <li class="tooltip" data-tooltip="Premium experiences and memberships. High-margin revenue from engaged community members.">Events & VIP: <span class="currency">₹31 Lakhs</span></li>
+                                    <li class="tooltip" data-tooltip="Based on 70% occupancy in first 3 locations. Conservative compared to industry leaders achieving 90%+.">Projected revenue: <span class="currency">₹10.31 Crores</span></li>
                                 </ul>
                             </td>
                         </tr>
@@ -937,27 +1000,27 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div class="canvas-section">Strategic Alliances:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Global partnerships for scaled distribution. Manufacturing partners enable rapid product rollout at competitive costs.">Strategic Alliances:</div>
                                 <ul class="canvas-content">
-                                    <li>Electronics manufacturers</li>
-                                    <li>Smart home technology firms</li>
-                                    <li>Global distribution partners</li>
+                                    <li class="tooltip" data-tooltip="Contract manufacturing for hardware products. Leveraging established supply chains for quality and cost efficiency.">Electronics manufacturers</li>
+                                    <li class="tooltip" data-tooltip="Integrating best-in-class home automation. Creating seamless experiences through technology partnerships.">Smart home technology firms</li>
+                                    <li class="tooltip" data-tooltip="Expanding geographic reach through partners. Local experts accelerate market entry and adoption.">Global distribution partners</li>
                                 </ul>
                             </td>
                             <td colspan="2">
-                                <div class="canvas-section">Core Operations:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Innovation and scaling for maximum impact. Product development focused on ecosystem integration.">Core Operations:</div>
                                 <ul class="canvas-content">
-                                    <li>Product R&D and manufacturing</li>
-                                    <li>Ecosystem integration</li>
-                                    <li>Global expansion</li>
+                                    <li class="tooltip" data-tooltip="Developing proprietary hardware and software solutions. Creating defensible IP with high margin potential.">Product R&D and manufacturing</li>
+                                    <li class="tooltip" data-tooltip="Connecting digital, physical, and product experiences. Creating network effects that increase switching costs.">Ecosystem integration</li>
+                                    <li class="tooltip" data-tooltip="Entering new markets with localized offerings. Leveraging data from initial markets to optimize expansion.">Global expansion</li>
                                 </ul>
                             </td>
                             <td>
-                                <div class="canvas-section">Primary Offers:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Complete ecosystem for modern living. Integrated solutions that create significant switching costs.">Primary Offers:</div>
                                 <ul class="canvas-content">
-                                    <li>IoT wearables ecosystem</li>
-                                    <li>Automated smart interiors</li>
-                                    <li>Integrated productivity solutions</li>
+                                    <li class="tooltip" data-tooltip="Connected devices for health, productivity, and security. Subscription model creates recurring revenue streams.">IoT wearables ecosystem</li>
+                                    <li class="tooltip" data-tooltip="Intelligent environments that adapt to users. Premium pricing for convenience and efficiency benefits.">Automated smart interiors</li>
+                                    <li class="tooltip" data-tooltip="Unified platform across all aspects of life. Creating the operating system for modern professionals.">Integrated productivity solutions</li>
                                 </ul>
                             </td>
                         </tr>
@@ -969,30 +1032,30 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="canvas-section">Assets:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Valuable assets that create competitive advantage. Focus on proprietary technology and brand reputation.">Assets:</div>
                                 <ul class="canvas-content">
-                                    <li>Product IP and patents</li>
-                                    <li>Manufacturing facilities</li>
-                                    <li>Global distribution network</li>
-                                    <li>Team: 50+ FTEs</li>
+                                    <li class="tooltip" data-tooltip="Proprietary technology protected by patents. Creates barriers to entry and licensing opportunities.">Product IP and patents</li>
+                                    <li class="tooltip" data-tooltip="Scalable production through partner network. Maintaining quality while controlling costs.">Manufacturing facilities</li>
+                                    <li class="tooltip" data-tooltip="Multi-channel approach for global reach. Combining direct and partner channels for maximum coverage.">Global distribution network</li>
+                                    <li class="tooltip" data-tooltip="Experienced team executing the vision. Specialized talent across technology, operations, and growth.">Team: 50+ FTEs</li>
                                 </ul>
                             </td>
                             <td colspan="2"> </td>
                             <td>
-                                <div class="canvas-section">Distribution:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Omnichannel approach for maximum reach. Leveraging both digital efficiency and physical experiences.">Distribution:</div>
                                 <ul class="canvas-content">
-                                    <li>Online store</li>
-                                    <li>Retail partnerships</li>
-                                    <li>Corporate sales</li>
-                                    <li>Global distribution</li>
+                                    <li class="tooltip" data-tooltip="Direct sales with premium positioning. Full margin capture on proprietary products.">Online store</li>
+                                    <li class="tooltip" data-tooltip="Expanding reach through established retailers. Trade partnerships for broader consumer access.">Retail partnerships</li>
+                                    <li class="tooltip" data-tooltip="Enterprise sales for bulk deployments. Higher volume with lower customer acquisition costs.">Corporate sales</li>
+                                    <li class="tooltip" data-tooltip="International expansion through local experts. Accelerating market entry with reduced risk.">Global distribution</li>
                                 </ul>
                             </td>
                             <td>
-                                <div class="canvas-section">Target Audience:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Broadening to mass-market adoption. Leveraging early adopters to cross-sell to mainstream consumers.">Target Audience:</div>
                                 <ul class="canvas-content">
-                                    <li>Tech enthusiasts</li>
-                                    <li>Productivity-focused professionals</li>
-                                    <li>Smart home adopters</li>
+                                    <li class="tooltip" data-tooltip="Early adopters driving product innovation. Willing to pay premium for cutting-edge solutions.">Tech enthusiasts</li>
+                                    <li class="tooltip" data-tooltip="Value-driven segment focused on efficiency. Seeking integrated solutions that save time and money.">Productivity-focused professionals</li>
+                                    <li class="tooltip" data-tooltip="Mainstream consumers adopting smart home tech. Large market with growing willingness to invest.">Smart home adopters</li>
                                 </ul>
                             </td>
                         </tr>
@@ -1002,22 +1065,22 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <div class="canvas-section">Expenses:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Strategic investments in future growth. Balancing innovation with operational efficiency.">Expenses:</div>
                                 <ul class="canvas-content">
-                                    <li>R&D: <span class="currency">₹4 Crores</span></li>
-                                    <li>Manufacturing: <span class="currency">₹3 Crores</span></li>
-                                    <li>Marketing: <span class="currency">₹2 Crores</span></li>
-                                    <li>Operations: <span class="currency">₹3 Crores</span></li>
-                                    <li>Total: <span class="currency">₹12 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Developing next-generation products and features. Creating pipeline for sustained competitive advantage.">R&D: <span class="currency">₹4 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Scaling production for new product lines. Achieving economies of scale to improve margins.">Manufacturing: <span class="currency">₹3 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Building global brand awareness. Performance-driven campaigns with clear ROI measurement.">Marketing: <span class="currency">₹2 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Supporting expanded operations and teams. Leveraging automation to maintain efficiency at scale.">Operations: <span class="currency">₹3 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Total investment for accelerated growth. Positioned for profitability and attractive exit multiples.">Total: <span class="currency">₹12 Crores</span></li>
                                 </ul>
                             </td>
                             <td colspan="2">
-                                <div class="canvas-section">Income Sources:</div>
+                                <div class="canvas-section tooltip" data-tooltip="Diversified revenue with high-margin streams. Recurring models create predictable revenue valued by investors.">Income Sources:</div>
                                 <ul class="canvas-content">
-                                    <li>Space Rentals: <span class="currency">₹38.4 Crores</span></li>
-                                    <li>Product sales</li>
-                                    <li>Ecosystem subscriptions</li>
-                                    <li>Projected revenue: <span class="currency">₹28.32 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="Continuing core revenue from space business. Mature locations achieving 85%+ occupancy rates.">Space Rentals: <span class="currency">₹38.4 Crores</span></li>
+                                    <li class="tooltip" data-tooltip="High-margin hardware with ecosystem lock-in. Bundled offerings increase average transaction value.">Product sales</li>
+                                    <li class="tooltip" data-tooltip="Recurring revenue from software and services. Creates predictable cash flow valued by investors.">Ecosystem subscriptions</li>
+                                    <li class="tooltip" data-tooltip="Conservative estimates based on market analogs. SaaS-like multiples applied to recurring revenue streams.">Projected revenue: <span class="currency">₹28.32 Crores</span></li>
                                 </ul>
                             </td>
                         </tr>
@@ -1123,21 +1186,26 @@
                     
                     <div class="prototype-links">
                         <div class="prototype-card">
-                            <h4>Virtual PC + Profile</h4>
+                            <h4>IPNOTEC Virtual PC + Profile</h4>
                             <p>One-time installation: ₹1001 ($12)</p>
-                            <a href="https://ipnotecpc.w3spaces.com/" target="_blank">ipnotecpc.w3spaces.com</a>
+                            <a href="https://i-pc.vercel.app" target="_blank">https://i-pc.vercel.app</a>
+                            <p>One ID + One time installation ₹1001 + Monthly ₹101</p>
+                            <p>Integrated VIP Address Book, Astrology with tech inputs, Expense evaluator generating PREDICT CARDS, IPNOTEC Event Dashboard</p>
                         </div>
                         
                         <div class="prototype-card">
-                            <h4>VIP Networking Terminal</h4>
-                            <p>Pay-as-you-go model</p>
-                            <a href="https://ipnotec1001.w3spaces.com/" target="_blank">ipnotec1001.w3spaces.com</a>
+                            <h4>1-CRORE CLUB</h4>
+                            <p>VIP - NETWORKING</p>
+                            <a href="https://1-cc.vercel.app/" target="_blank">https://1-cc.vercel.app/</a>
+                            <p>Leased LandRover + Access to IPNOTEC Properties + Build your own productive network</p>
                         </div>
                         
                         <div class="prototype-card">
                             <h4>IPNOTEC Multiverse</h4>
                             <p>Productivity game for entrepreneurs</p>
-                            <a href="https://ipnotec-mv.w3spaces.com/" target="_blank">ipnotec-mv.w3spaces.com</a>
+                            <a href="https://future-11-game.vercel.app" target="_blank">https://future-11-game.vercel.app</a>
+                            <a href="https://multiverse-rosy.vercel.app" target="_blank">https://multiverse-rosy.vercel.app</a>
+                            <p>Games like Future 11, AVATARS and digital gamified experience with leaderboards and achievements</p>
                         </div>
                     </div>
                     
